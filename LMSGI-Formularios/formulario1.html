@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Què en penses? - ITIC Barcelona</title>
+    <link rel="stylesheet" href="style1.css">
+
+</head>
+<body>
+    <div class="container">
+        <h1>Què en penses?</h1>
+        
+        
+        <div class="form-group">
+                <label for="nom">Nom i cognoms <span class="required">*</span></label>
+                <input type="text" id="nom" name="nom" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="edat">Edat <span class="required">*</span></label>
+                <input type="number" id="edat" name="edat" min="16" max="99" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="cicle">Quin cicle estàs estudiant? <span class="required">*</span></label>
+                <select id="cicle" name="cicle" required>
+                    <option value="" disabled selected>Selecciona un cicle</option>
+                    <option value="ASIX">ASIX</option>
+                    <option value="DAM">DAM</option>
+                    <option value="DAW">DAW</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Marca els temes que vulguis estar sempre al dia! <span class="required">*</span></label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="ia" name="temes" value="Intel·ligència artificial" checked>
+                        <label for="ia">Intel·ligència artificial</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="quantica" name="temes" value="Computació quàntica">
+                        <label for="quantica">Computació quàntica</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="supercomputadors" name="temes" value="Supercomputadors">
+                        <label for="supercomputadors">Supercomputadors</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="algorismia" name="temes" value="Recerca en algorísmia">
+                        <label for="algorismia">Recerca en algorísmia</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>En quin curs estàs? <span class="required">*</span></label>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="primer" name="curs" value="Primer" checked>
+                        <label for="primer">Primer</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="segon" name="curs" value="Segon">
+                        <label for="segon">Segon</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="altres" name="curs" value="Altres">
+                        <label for="altres">Altres</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="comentaris">Hi ha algun tema més que t'interessi? Explica'ns-ho! <span class="required">*</span></label>
+                <textarea id="comentaris" name="comentaris" rows="4" placeholder="Escriu aquí els teus comentaris o suggeriments..." required></textarea>
+            </div>
+            
+            <!-- Botó per enviar el formulari -->
+            <button type="submit">Subscriu-me</button>
+        </form>
+    </div>
+</body>
+</html>
