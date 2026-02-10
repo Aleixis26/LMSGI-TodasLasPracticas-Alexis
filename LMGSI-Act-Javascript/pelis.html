@@ -1,0 +1,59 @@
+<html>
+<body>
+
+<h2>Películas</h2>
+
+<!-- Buscador -->
+<input type="text" id="buscar" placeholder="Buscar...">
+
+<!-- Aquí van las películas -->
+<div id="pelis"></div>
+
+<script>
+// Datos de películas
+let peliculas = [
+    {titulo: "El Padrino", año: "1972", director: "Coppola", tipo: "Drama"},
+    {titulo: "Matrix", año: "1999", director: "Wachowski", tipo: "Ciencia Ficción"},
+    {titulo: "Titanic", año: "1997", director: "Cameron", tipo: "Romance"},
+    {titulo: "Star Wars", año: "1977", director: "Lucas", tipo: "Ciencia Ficción"}
+];
+
+// Mostrar películas
+function mostrar(lista) {
+    let html = '';
+    for(let peli of lista) {
+        html += `
+        <div style="border:1px solid black; margin:10px; padding:10px;">
+            <h3>${peli.titulo}</h3>
+            <p>Año: ${peli.año}</p>
+            <p>Director: ${peli.director}</p>
+            <p>Tipo: ${peli.tipo}</p>
+        </div>`;
+    }
+    document.getElementById('pelis').innerHTML = html || '<p>No hay películas</p>';
+}
+
+// Buscar
+document.getElementById('buscar').oninput = function() {
+    let texto = this.value.toLowerCase();
+    if(texto === '') {
+        mostrar(peliculas);
+        return;
+    }
+    
+    let encontradas = peliculas.filter(function(peli) {
+        return peli.titulo.toLowerCase().includes(texto) ||
+               peli.director.toLowerCase().includes(texto) ||
+               peli.tipo.toLowerCase().includes(texto) ||
+               peli.año.includes(texto);
+    });
+    
+    mostrar(encontradas);
+};
+
+// Mostrar todas al cargar
+mostrar(peliculas);
+</script>
+
+</body>
+</html>

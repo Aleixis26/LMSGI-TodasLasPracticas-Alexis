@@ -1,0 +1,75 @@
+<html>
+<body>
+
+<h2>Login</h2>
+
+<!-- Campo nombre -->
+<input type="text" id="nombre" placeholder="Escribe tu nombre con @">
+<div id="msg1" style="color:red;">Debe tener @</div>
+
+<!-- Campo contraseña -->
+<input type="password" id="pass" placeholder="Contraseña">
+<div>
+    <input type="checkbox" id="mostrar"> Mostrar contraseña
+</div>
+<div id="msg2" style="color:red;">Minúscula, mayúscula, número, 8 letras</div>
+
+<!-- Botón (oculto al principio) -->
+<button id="btn" style="display:none;" onclick="window.open('pelis.html')">Entrar</button>
+
+<script>
+// Elementos
+let nom = document.getElementById('nombre');
+let pass = document.getElementById('pass');
+let mostrar = document.getElementById('mostrar');
+let btn = document.getElementById('btn');
+let msg1 = document.getElementById('msg1');
+let msg2 = document.getElementById('msg2');
+
+// Mostrar/ocultar contraseña
+mostrar.onchange = function() {
+    pass.type = this.checked ? 'text' : 'password';
+};
+
+// Cuando escriben en nombre
+nom.oninput = function() {
+    let ok = this.value.includes('@');
+    msg1.textContent = ok ? '✓ Bien' : 'Debe tener @';
+    msg1.style.color = ok ? 'green' : 'red';
+    revisar();
+};
+
+// Cuando escriben en contraseña
+pass.oninput = function() {
+    let texto = this.value;
+    let ok = /[a-z]/.test(texto) && 
+             /[A-Z]/.test(texto) && 
+             /[0-9]/.test(texto) && 
+             texto.length >= 8;
+    msg2.textContent = ok ? 'Bien' : 'Minúscula, mayúscula, número, 8 letras';
+    msg2.style.color = ok ? 'green' : 'red';
+    revisar();
+};
+
+// Revisar si todo está bien
+function revisar() {
+    let nomOk = nom.value.includes('@');
+    let passOk = /[a-z]/.test(pass.value) && 
+                 /[A-Z]/.test(pass.value) && 
+                 /[0-9]/.test(pass.value) && 
+                 pass.value.length >= 8;
+    
+    if(nomOk && passOk) {
+        btn.style.display = 'block';
+        msg1.style.display = 'none';
+        msg2.style.display = 'none';
+    } else {
+        btn.style.display = 'none';
+        msg1.style.display = 'block';
+        msg2.style.display = 'block';
+    }
+}
+</script>
+
+</body>
+</html>
